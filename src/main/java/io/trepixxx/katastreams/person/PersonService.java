@@ -1,8 +1,11 @@
 package io.trepixxx.katastreams.person;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.toList;
 
 class PersonService {
 
@@ -20,5 +23,9 @@ class PersonService {
 
     static Set<String> getIps(List<Person> persons) {
         return null;
+    }
+
+    static Map<String, List<Person>> groupByIp(List<Person> persons) {
+        return persons.stream().collect(groupingBy(Person::getIpAddress, toList()));
     }
 }
