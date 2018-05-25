@@ -8,4 +8,12 @@ class CarService {
         return null;
     }
 
+    static List<Car> getCarsSortedByYear(List<Car> cars) {
+        return null;
+    }
+
+    static Integer countPost2000Cars(List<Car> cars) {
+        return null;
+    }
+
 }

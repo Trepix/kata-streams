@@ -30,24 +30,20 @@ class CarTest {
         assertEquals(expectedCarManufacturer, bmwCarManufacturer);
     }
 
+    @Test
+    void shouldReturnCarsSortedByYear() {
+        List<Car> sortedCars = CarService.getCarsSortedByYear(cars);
 
-//    @Test
-//    void shouldReturnMapLinkingEachGroupOfPersonsWithAnIp() {
-//        Map<String, List<Person>> ips = PersonService.groupByIp(CarTest.cars);
-//
-//        Map<String, List<Person>> expectedIps = Collections.unmodifiableMap(new HashMap<String, List<Person>>() {
-//            {
-//                put("203.63.60.86", getByIds(1,2,14));
-//                put("10.105.170.42", getByIds(3,5,8,10));
-//                put("167.133.36.33", getByIds(4,6,15,16,17,19,20));
-//                put("245.181.139.113", getByIds(7,9));
-//                put("18.115.65.8", getByIds(11,12,13));
-//                put("227.112.191.26", getByIds(18));
-//            }
-//        });
-//
-//        assertEquals(expectedIps, ips);
-//    }
+        List<Car> expectedSortedCars = getByIds(4,26,8,17,1,10,11,13,3,14,16,24,2,23,25,5,27,9,18,15,21,7,28,20,22,29,30,12,19,6);
+        assertEquals(expectedSortedCars, sortedCars);
+    }
+
+    @Test
+    void shouldReturnCarsPost2000() {
+        Integer cardsPost2000Count = CarService.countPost2000Cars(cars);
+
+        assertEquals(Integer.valueOf(17), cardsPost2000Count);
+    }
 
     private static Car createCar(String line) {
         String[] splitLine = line.split(",");
